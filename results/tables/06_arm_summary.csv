@@ -1,0 +1,4 @@
+"arm","norm","method","param","n_clusters","ARI","NMI"
+"A","SCTransform","Louvain","res 0.47",6,0.4755,0.511
+"B","logNormalize","Louvain","res 0.60",7,0.3699,0.4897
+"C","logNormalize","BayesSpace","q = 7",7,0.5483,0.6746

@@ -1,0 +1,8 @@
+"truth_layer","n_truth","n_correct","resolved","recall"
+"L1",243,239,"Yes",0.984
+"L2",252,207,"Yes",0.821
+"L3",988,607,"Yes",0.614
+"L4",218,0,"No(not recovered",0
+"L5",670,551,"Yes",0.822
+"L6",671,460,"Yes (plus boundary domain)",0.686
+"WM",511,369,"Yes(split with boundary domain)",0.722

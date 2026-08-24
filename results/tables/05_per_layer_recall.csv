@@ -1,0 +1,8 @@
+"truth_layer","n_truth","n_correct","resolved","recall"
+"L1",243,214,"Yes",0.881
+"L2",252,169,"No (merged with L3)",0.671
+"L3",988,838,"No (merged with L2)",0.848
+"L4",218,0,"No (not recovered)",0
+"L5",670,345,"Yes",0.515
+"L6",671,384,"Yes",0.572
+"WM",511,511,"Yes",1

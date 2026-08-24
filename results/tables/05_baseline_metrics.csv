@@ -1,0 +1,2 @@
+"method","resolution","n_clusters","n_spots","ARI","NMI","ARI_excl_nonlaminar","n_spots_excl"
+"Louvain (expression-only)",0.47,6,3553,0.4755,0.511,0.5435,3192

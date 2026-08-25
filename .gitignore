@@ -17,4 +17,4 @@
 data/processed/*.rds
 
 # Raw downloaded data
-data/raw/*
+data/raw/*.RDataTmp*

@@ -424,3 +424,32 @@ ggsave("results/figures/08_ABC_benchmark_annotated.png",
        p_benchmark_annotated, width = 9, height = 6, dpi = 300, bg = "white")
 
 cat("\nA/B/C ARI-NMI benchmark figure completed.\n")
+
+#4. Cell-type composition by layer (heatmap)
+library(pheatmap)
+
+by_layer <- read.csv("results/tables/07_prop_by_true_layer.csv",
+                     stringsAsFactors = FALSE)
+
+hm_mat <- as.matrix(by_layer[, setdiff(names(by_layer), "layer")])
+rownames(hm_mat) <- by_layer$layer
+hm_mat <- hm_mat[c("L1","L2","L3","L4","L5","L6","WM"), ]
+
+stopifnot(nrow(hm_mat) == 7, ncol(hm_mat) == 7)
+
+png("results/figures/08_layer_celltype_heatmap.png",
+    width = 1800, height = 1400, res = 220)
+pheatmap(
+  hm_mat,
+  cluster_rows    = FALSE,
+  cluster_cols    = FALSE,
+  display_numbers = TRUE,
+  number_format   = "%.3f",
+  fontsize_number = 9,
+  color           = colorRampPalette(c("white", "#4292C6", "#08306B"))(100),
+  main            = "RCTD cell-type composition by manual layer annotation",
+  angle_col       = 0
+)
+dev.off()
+
+cat("\nLayer x cell-type heatmap completed.\n")

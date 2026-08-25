@@ -116,7 +116,7 @@ p_compare
 
 
 ggsave(
-  "results/figures/09_truth_vs_expression_only.png",
+  "results/figures/08_truth_vs_expression_only.png",
   p_compare,
   width = 14,
   height = 7,
@@ -293,7 +293,7 @@ p_truth_vs_bayes
 # Save
 
 ggsave(
-  "results/figures/09_truth_vs_bayesspace.png",
+  "results/figures/08_truth_vs_bayesspace.png",
   p_truth_vs_bayes,
   width = 14,
   height = 7,
@@ -307,7 +307,7 @@ cat(
 
 #3. A/B/C ARI +Benchmark
 bench <- read.csv(
-  "results/tables/07_arm_summary.csv",
+  "results/tables/06_arm_summary.csv",
   stringsAsFactors = FALSE
 )
 print(bench)
@@ -406,18 +406,21 @@ p_benchmark <- ggplot(
 p_benchmark
 
 ggsave(
-  "results/figures/09_ABC_ARI_NMI_benchmark.png",
+  "results/figures/08_ABC_ARI_NMI_benchmark.png",
   p_benchmark,
   width = 9,
   height = 6,
   dpi = 300,
   bg = "white"
 )
-p_arms +
+p_benchmark_annotated <- p_benchmark +
   annotate("segment", x = 2.19, xend = 2.81, y = 0.60, yend = 0.60) +
   annotate("segment", x = 2.19, xend = 2.19, y = 0.58, yend = 0.60) +
   annotate("segment", x = 2.81, xend = 2.81, y = 0.58, yend = 0.60) +
   annotate("text", x = 2.5, y = 0.625, size = 5, fontface = "bold",
            label = "+0.178 ARI\nspatial prior only")
+
+ggsave("results/figures/08_ABC_benchmark_annotated.png",
+       p_benchmark_annotated, width = 9, height = 6, dpi = 300, bg = "white")
 
 cat("\nA/B/C ARI-NMI benchmark figure completed.\n")

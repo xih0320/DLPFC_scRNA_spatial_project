@@ -26,6 +26,7 @@ metrics_A <- read.csv("results/tables/05_baseline_metrics.csv")
 print(metrics_A)
 
 # Arm B: logNorm + PCA + Louvain, res = 0.60 (7 clusters)
+set.seed(42)
 DefaultAssay(dLPFC_seurat) <- "Spatial"
 Assays(dLPFC_seurat)
 
@@ -45,6 +46,8 @@ scan_B <- do.call(rbind, lapply(seq(0.3, 1.2, by = 0.1), function(r) {
              n_clusters = nlevels(droplevels(so$seurat_clusters)))
 }))
 print(scan_B)
+write.csv(scan_B, "results/tables/06_resolution_scan_lognorm.csv", row.names = FALSE)
+stopifnot(!6 %in% scan_B$n_clusters)  
 
 #Arm B : logNorm + PCA + Louvain, res = 0.6
 dLPFC_logn <- FindClusters(dLPFC_logn, resolution = 0.6, verbose = FALSE)

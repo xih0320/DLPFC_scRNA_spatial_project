@@ -149,12 +149,12 @@ for (ct in c("Oligo", "Excit")) {
   p <- vis_gene(spe = spe_bs, sampleid = "151673",
                 geneid = paste0("prop_", ct),
                 point_size = 1.5, spatial = TRUE)
-  png(sprintf("results/figures/08_prop_%s.png", ct),
+  png(sprintf("results/figures/07_prop_%s.png", ct),
       width = 1400, height = 1400, res = 200)
   print(p); dev.off()
   plots[[ct]] <- p
 }
-stopifnot(all(file.size(sprintf("results/figures/08_prop_%s.png",
+stopifnot(all(file.size(sprintf("results/figures/07_prop_%s.png",
                                 c("Oligo", "Excit"))) > 0))
 
 plots$Oligo

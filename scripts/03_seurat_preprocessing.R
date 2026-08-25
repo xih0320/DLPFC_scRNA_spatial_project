@@ -65,10 +65,10 @@ rownames(counts_matrix) <- scuttle::uniquifyFeatureNames(
 )
 
 # canonical laminar markers must be findable for script 04
-c("SNAP25", "MBP", "PCP4", "RORB", "KRT17", "MOBP") %in% rownames(counts_matrix)
-missming <- setdiff(markers_needed, rownames(counts_matrix))
-if (length(missing)) cat("MISSING:" , missing, "\n")
-stopifnot(length(missing) == 0)
+markers_needed <- c("SNAP25","MBP","PCP4","RORB","KRT17","MOBP")
+missing_markers <- setdiff(markers_needed, rownames(counts_matrix))
+if (length(missing_markers)) cat("MISSING:", missing_markers, "\n")
+stopifnot(length(missing_markers) == 0)
 
 
 
@@ -199,3 +199,10 @@ stopifnot(
   file.exists("data/processed/ground_truth_layers.rds")
 )
 
+writeLines(capture.output(sessionInfo()), "results/tables/03_sessionInfo.txt")
+
+out <- c(list.files("data/processed", pattern = "^dLPFC_seurat_processed|^spe151673_clustered|^ground_truth", full.names = TRUE),
+         list.files("results/tables",  pattern = "^03", full.names = TRUE),
+         list.files("results/figures", pattern = "^03", full.names = TRUE))
+print(data.frame(file = basename(out), bytes = file.size(out)))
+stopifnot(all(file.size(out) > 0))

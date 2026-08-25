@@ -4,7 +4,7 @@
 # R / RStudio temporary files
 .Rhistory
 .RData
-.RDataTmp
+.RDataTmp*
 .Rproj.user/
 .Ruserdata
 
@@ -17,4 +17,4 @@
 data/processed/*.rds
 
 # Raw downloaded data
-data/raw/*.RDataTmp*
+data/raw/*
